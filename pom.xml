@@ -83,7 +83,7 @@
 
 	<build>
 		<plugins>
-			<!-- Plugin de compilation obligatoire pour Lombok -->
+			<!-- Plugin de compilation pour Lombok -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
@@ -93,17 +93,25 @@
 						<path>
 							<groupId>org.projectlombok</groupId>
 							<artifactId>lombok</artifactId>
-							<version>1.18.30</version> <!-- Adaptez si besoin -->
+							<version>1.18.30</version>
 						</path>
 					</annotationProcessorPaths>
 				</configuration>
 			</plugin>
 
-			<!-- Plugin Spring Boot -->
+			<!-- Plugin Spring Boot avec la mainClass spécifiée -->
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+				<configuration>
+					<mainClass>com.stage.gestion_marches.GestionMarchesApplication</mainClass>
+				</configuration>
 			</plugin>
 		</plugins>
 	</build>
+	<profiles>
+		<profile>
+			<id>production</id>
+		</profile>
+	</profiles>
 </project>
