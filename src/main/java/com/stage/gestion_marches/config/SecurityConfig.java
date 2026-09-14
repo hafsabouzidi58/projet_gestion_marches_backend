@@ -81,7 +81,7 @@ public class SecurityConfig {
                         .requestMatchers("/api/marches/**", "/api/prestataires/**", "/api/garanties/**")
                         .hasAnyAuthority(
                                 "RESPONSABLE_MARCHES", "ROLE_RESPONSABLE_MARCHES",
-                                "ADMIN_SYSTEME", "ROLE_ADMIN_SYSTEME"
+                                "ADMIN_SYSTEME", "ROLE_ADMIN_SYSTEME","RESPONSABLE_GREEN_WOOD", "ROLE_RESPONSABLE_GREEN_WOOD"
                         )
 
                         // 5. RESPONSABLE_GREEN_WOOD : Déclaration des problèmes, suivi des avancements & pénalités
