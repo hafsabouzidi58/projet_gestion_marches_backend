@@ -88,7 +88,7 @@ public class SecurityConfig {
                         .requestMatchers("/api/green-wood/**", "/api/problemes/**", "/api/avancements/**", "/api/penalites/**")
                         .hasAnyAuthority(
                                 "RESPONSABLE_GREEN_WOOD", "ROLE_RESPONSABLE_GREEN_WOOD",
-                                "ADMIN_SYSTEME", "ROLE_ADMIN_SYSTEME"
+                                "ADMIN_SYSTEME", "ROLE_ADMIN_SYSTEME","RESPONSABLE_MARCHES", "ROLE_RESPONSABLE_MARCHES"
                         )
 
                         // Tout autre appel doit être authentifié
