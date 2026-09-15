@@ -104,12 +104,22 @@ public class SecurityConfig {
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
-        configuration.setAllowedOrigins(List.of(
+
+        // 1. Utilisation de OriginPatterns au lieu de Origins strict
+        // Permet d'autoriser dynamiquement tous les sous-domaines de Vercel ainsi que localhost
+        configuration.setAllowedOriginPatterns(List.of(
                 "http://localhost:4200",
-                "https://projet-gestion-marches-front-end-blond.vercel.app/" // Remplacez par le nom de votre domaine Vercel exact
+                "https://*.vercel.app"
         ));
+
         configuration.setAllowedMethods(List.of("GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"));
-        configuration.setAllowedHeaders(List.of("Authorization", "Content-Type"));
+
+        // 2. Autorise tous les headers (ex: Authorization, Content-Type, Accept, X-Requested-With, etc.)
+        configuration.setAllowedHeaders(List.of("*"));
+
+        // Expose l'en-tête Authorization au frontend si vous envoyez/recevez des tokens dans les headers
+        configuration.setExposedHeaders(List.of("Authorization"));
+
         configuration.setAllowCredentials(true);
 
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
